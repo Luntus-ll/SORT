@@ -35,7 +35,6 @@ def select(arr):
     elapsed_time = time.time() - st
     return arr, comparisons, swaps, elapsed_time
 
-
 def insert(arr):
     st = time.time()
     arr = arr.copy()
@@ -71,7 +70,8 @@ def main():
         "Случайный": random_array
     }
 
-    print(f"{'Массив':15} | {'Алгоритм':15} | {'Отсортированный':15} | {'Сравнения':15} | {'Перестановки':15} | {'Время, с':15}")
+    print(f"{'Массив':15} | {'Bubble sort':12} | {'Selection sort':14} | {'Insertion sort':14}")
+    
 
     algorithms = [
         ("Bubble Sort", bubble),
@@ -80,10 +80,12 @@ def main():
     ]
 
     for description, array in test_arr.items():
+        row = f"{description:15} |"
         for name, func in algorithms:
             array_copy = array.copy()
             sorted_arr, comp, swaps, elapsed_time = func(array_copy)
-            print(f"{description:20} | {name:12} | {sorted_arr} | {comp:10} | {swaps:12} | {elapsed_time:.6f}")
+            row += f" Сравнения:{comp:4} Перестановки:{swaps:4} Время:{elapsed_time:.4f} секунд |"
+        print(row)
 
 if __name__ == "__main__":
     main()
